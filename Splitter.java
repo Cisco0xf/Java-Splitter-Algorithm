@@ -22,16 +22,18 @@ class Splitter {
         final String eTarget = "%s%s".formatted(target, pattern);
 
         for (int i = 0; i < eTarget.length(); i++) {
-            final String item = String.valueOf(eTarget.charAt(i));
             
             final boolean hasMatch = eTarget.startsWith(pattern, i);
 
             if (hasMatch) {
                 data.add(holder.toString());
 
+                i += pattern.length() - 1;
 
                 holder.setLength(0);
             } else {
+                final String item = String.valueOf(eTarget.charAt(i));
+                
                 holder.append(item);
             }
 
